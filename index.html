@@ -5,17 +5,43 @@
 		<title>VanillaJS • TodoMVC</title>
 		<link rel="stylesheet" href="./base.css">
 		<link rel="stylesheet" href="./index.css">
+		<script>
+				function generateListItem(title) {
+					const range = document.createRange();
+					const target = document.querySelector('ul.todo-list');
+					const defaultTemplate
+					=	`<li>
+							<div class="view">
+								<input class="toggle" type="checkbox">
+								<label>${title}</label>
+								<button class="destroy"></button>
+							</div>
+						 </li>`;
+					const documentFragment = range.createContextualFragment(defaultTemplate)
+					target.appendChild(documentFragment);
+				}
+
+				function handleInputKeyDown(e) {
+					if(event.key === "Enter") {
+						var title = e.target.value;
+						generateListItem(title);
+						e.target.value = '';
+					}
+				}
+
+		</script>
 	</head>
 	<body>
 		<section class="todoapp">
 			<header class="header">
 				<h1>todos</h1>
-				<input class="new-todo" placeholder="What needs to be done?" autofocus>
+				<input class="new-todo" placeholder="What needs to be done?" autofocus onkeydown="handleInputKeyDown(event)">
 			</header>
 			<section class="main">
 				<input id="toggle-all" class="toggle-all" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
-				<ul class="todo-list"></ul>
+				<ul class="todo-list">
+				</ul>
 			</section>
 			<footer class="footer">
 				<span class="todo-count"></span>

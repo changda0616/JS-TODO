@@ -12,7 +12,7 @@
 					const defaultTemplate
 					=	`<li data-id=${itemId}>
 							<div class="view">
-								<input class="toggle" type="checkbox">
+								<input class="toggle" type="checkbox" onChange="handleCheckboxChange(${itemId})">
 								<label>${title}</label>
 								<button class="destroy" onClick="destroy(${itemId})"></button>
 							</div>
@@ -35,6 +35,10 @@
 				function destroy(id) {
 					const target = $(`li[data-id="${id}"]`);
 					target.remove();
+				}
+
+				function handleCheckboxChange(id) {
+					$(`li[data-id="${id}"]`).toggleClass('completed');
 				}
 		</script>
 	</head>

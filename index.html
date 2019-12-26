@@ -3,24 +3,19 @@
 	<head>
 		<meta charset="utf-8">
 		<title>VanillaJS • TodoMVC</title>
+		<link rel="stylesheet" href="./jquery-ui.min.css">
 		<link rel="stylesheet" href="./index.css">
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="./jquery-ui.min.js"></script>
 		<script>
 				let itemId = 0;
-				// $(function() {
-				// 	$( ".clear-completed" ).on( "click", function(e) {
-  			// 		clearComplete()
-				// 	});
-				// })
-				// $( document ).on('DOMContentLoaded',function() {
-				// 	$( ".clear-completed" ).on( "click", function(e) {
-  			// 		clearComplete()
-				// 	});				});
 
 				$( document ).ready(function() {
 					$( ".clear-completed" ).on( "click", function(e) {
   					clearComplete()
 					});
+					$('ul.todo-list').sortable();
+    			$('ul.todo-list').disableSelection();
 				});
 
 				function addListItem(title) {
@@ -33,7 +28,6 @@
 							</div>
 						 </li>`;
 					const target = $('ul.todo-list');
-					
 					target.append(defaultTemplate);
 					itemId ++;
 				}

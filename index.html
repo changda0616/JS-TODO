@@ -40,6 +40,11 @@
 				function handleCheckboxChange(id) {
 					$(`li[data-id="${id}"]`).toggleClass('completed');
 				}
+
+				function clearComplete() {
+					$(`li.completed`).remove();
+				}
+				
 		</script>
 	</head>
 	<body>
@@ -67,7 +72,7 @@
 						<a href="#/completed">Completed</a>
 					</li>
 				</ul>
-				<button class="clear-completed">Clear completed</button>
+				<button class="clear-completed" onclick="clearComplete()">Clear completed</button>
 			</footer>
 		</section>
 		<footer class="info">

@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>VanillaJS • TodoMVC</title>
 		<link rel="stylesheet" href="./index.css">
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script>
 				let itemId = 0;
 
@@ -16,8 +17,9 @@
 								<button class="destroy" onClick="destroy(${itemId})"></button>
 							</div>
 						 </li>`;
-					const target = document.querySelector('ul.todo-list');
-					target.innerHTML = target.innerHTML + defaultTemplate;
+					const target = $('ul.todo-list');
+					
+					target.append(defaultTemplate);
 					itemId ++;
 				}
 
@@ -31,9 +33,8 @@
 				}
 
 				function destroy(id) {
-					const target = document.querySelector(`li[data-id="${id}"]`);
-					const list = document.querySelector('ul.todo-list');
-					list.removeChild(target);
+					const target = $(`li[data-id="${id}"]`);
+					target.remove();
 				}
 		</script>
 	</head>

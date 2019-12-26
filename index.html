@@ -25,7 +25,7 @@
 
 				// event listener
 				function handleInputKeyDown(e) {
-					if(event.key === "Enter") {
+					if(event.key === "Enter" && event.target.value)  {
 						var title = e.target.value;
 						addListItem(title);
 						e.target.value = '';

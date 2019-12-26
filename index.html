@@ -6,29 +6,36 @@
 		<link rel="stylesheet" href="./base.css">
 		<link rel="stylesheet" href="./index.css">
 		<script>
-				function generateListItem(title) {
-					const range = document.createRange();
-					const target = document.querySelector('ul.todo-list');
+				let itemId = 0;
+
+				function addListItem(title) {
 					const defaultTemplate
-					=	`<li>
+					=	`<li data-id=${itemId}>
 							<div class="view">
 								<input class="toggle" type="checkbox">
 								<label>${title}</label>
-								<button class="destroy"></button>
+								<button class="destroy" onClick="destroy(${itemId})"></button>
 							</div>
 						 </li>`;
-					const documentFragment = range.createContextualFragment(defaultTemplate)
-					target.appendChild(documentFragment);
+					const target = document.querySelector('ul.todo-list');
+					target.innerHTML = target.innerHTML + defaultTemplate;
+					itemId ++;
 				}
 
+				// event listener
 				function handleInputKeyDown(e) {
 					if(event.key === "Enter") {
 						var title = e.target.value;
-						generateListItem(title);
+						addListItem(title);
 						e.target.value = '';
 					}
 				}
 
+				function destroy(id) {
+					const target = document.querySelector(`li[data-id="${id}"]`);
+					const list = document.querySelector('ul.todo-list');
+					list.removeChild(target);
+				}
 		</script>
 	</head>
 	<body>

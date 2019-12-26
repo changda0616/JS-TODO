@@ -7,6 +7,21 @@
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script>
 				let itemId = 0;
+				// $(function() {
+				// 	$( ".clear-completed" ).on( "click", function(e) {
+  			// 		clearComplete()
+				// 	});
+				// })
+				// $( document ).on('DOMContentLoaded',function() {
+				// 	$( ".clear-completed" ).on( "click", function(e) {
+  			// 		clearComplete()
+				// 	});				});
+
+				$( document ).ready(function() {
+					$( ".clear-completed" ).on( "click", function(e) {
+  					clearComplete()
+					});
+				});
 
 				function addListItem(title) {
 					const defaultTemplate
@@ -44,7 +59,7 @@
 				function clearComplete() {
 					$(`li.completed`).remove();
 				}
-				
+
 		</script>
 	</head>
 	<body>
@@ -72,7 +87,7 @@
 						<a href="#/completed">Completed</a>
 					</li>
 				</ul>
-				<button class="clear-completed" onclick="clearComplete()">Clear completed</button>
+				<button class="clear-completed">Clear completed</button>
 			</footer>
 		</section>
 		<footer class="info">
